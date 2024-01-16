@@ -40,6 +40,7 @@ while true; do
 	echo "--- 105 - Instala JNetBeans"
 	echo "--- 103 - Instalar o Android Studio"
 	echo "--- 104 - Instalar o MariaDB e DBeaver"
+    echo "--- 105 - Instalar VirtualBox"
 
 	echo "--------- Auxiliares --------------------------------"
 	echo "--- 200 - Abrir Terminal"
@@ -116,14 +117,7 @@ while true; do
             ;;
     esac
 ExecVSCODE() {
-    limpar_terminal
-    echo -e "Instalando o Visual Studio Code"
-    wget -O vscode_amd64.deb "$URL_VSCODE"
-    sudo sh vscode_amd64.deb --extract /opt/vscode
-    rm vscode_amd64.deb
-    ln -s /opt/vscode/Code /usr/bin/Code
-    echo -e "[OK] Instalação concluída com sucesso!"
-    gnome-terminal -- bash -c 'tail -f /tmp/install_log.txt; bash'
+    code
 }
 
 ExecNETBEANS() {
@@ -135,7 +129,7 @@ ExecMARIADB() {
 }
 
 ExecDBEAVER() {
-    dbeaver
+    dbeaver-ce
 }
 
 ExecANDROIDSTUDIO() {
@@ -179,7 +173,16 @@ BaixarNetbeans() {
     ./Apache-NetBeans-12.0-bin-linux-x64.sh
 }
 
+BaixarVirtualBox(){
+    sudo apt-get update
+    sudo apt-get install virtualbox
+    sudo apt-get install virtualbox—ext–pack
+} 
+
 BaixarAndroid() {
+
+    sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+
     Coloque aqui os comandos para baixar e instalar o Android Studio
     wget https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2020.3.1.24/android-studio-2020.3.1.24-linux.tar.gz
     tar -xzvf android-studio-2020.3.1.24-linux.tar.gz
